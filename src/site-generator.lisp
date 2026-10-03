@@ -57,9 +57,13 @@
   (let ((data (load-data infinito)))
     (format nil (load-template "verbo.html")
 	    (car data)
-	    (js-conjugation (cadr data)))))
+	    (js-conjugation data))))
+
+(defun generate-index ()
+  (format nil (load-template "index.html")
+	  "Lista di verbi"))
 
 (defun generate-site ()
   (ensure-directories-exist *output-dir*)
-  (write-out "index.html" "hello verbi")
+  (write-out "index.html" (generate-index))
   (write-out "essere.html" (generate-verbo "essere")))
