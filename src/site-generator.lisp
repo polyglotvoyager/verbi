@@ -30,17 +30,34 @@
 
 (defun split-words (words-string)
   "Add an empty string as the 0th element"
-  (format nil "['', ~{'~A', ~}]"
-	  (loop for i = 0 then (1+ j)
-		as j = (position #\Space words-string :start i)
-		collect (subseq words-string i j)
-		while j)))
+  (loop for i = 0 then (1+ j)
+	as j = (position #\Space words-string :start i)
+	collect (subseq words-string i j)
+	while j))
+
+(defun add-persons (conjugation-string)
+  (let ((conjugations (split-words conjugation-string)))
+    (format nil "
+        {
+          'io': ~A,
+          'tu': ~A,
+          'lui o lei': ~A,
+          'noi': ~A,
+          'voi': ~A,
+          'loro': ~A,
+        }"
+	    (nth 0 conjugations)
+	    (nth 1 conjugations)
+	    (nth 2 conjugations)
+	    (nth 3 conjugations)
+	    (nth 4 conjugations)
+	    (nth 5 conjugations))))
 
 (defun js-tempo (lisp-tempo)
   (format nil
 	  "'~A': ~A"
 	  (car lisp-tempo)
-	  (split-words (cadr lisp-tempo))))
+	  (add-persons (cadr lisp-tempo))))
 
 (defun js-modo (lisp-modo)
   (format nil
