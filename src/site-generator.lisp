@@ -3,7 +3,7 @@
 ;; add trailing slash!
 (defparameter *templates-dir* "/home/sandbox/common-lisp/verbi/templates/")
 (defparameter *data-dir* "/home/sandbox/common-lisp/verbi/data/")
-(defparameter *output-dir* "/home/sandbox/common-lisp/verbi/site/")
+(defparameter *output-dir* "/home/sandbox/common-lisp/verbi/public/")
 
 (defun output-path (filename)
   (concatenate 'string *output-dir* filename))
