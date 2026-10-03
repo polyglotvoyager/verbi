@@ -39,12 +39,12 @@
   (let ((conjugations (split-words conjugation-string)))
     (format nil "
         {
-          'io': ~A,
-          'tu': ~A,
-          'lui o lei': ~A,
-          'noi': ~A,
-          'voi': ~A,
-          'loro': ~A,
+          'io': '~A',
+          'tu': '~A',
+          'lui o lei': '~A',
+          'noi': '~A',
+          'voi': '~A',
+          'loro': '~A',
         }"
 	    (nth 0 conjugations)
 	    (nth 1 conjugations)
